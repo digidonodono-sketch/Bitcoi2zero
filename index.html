@@ -57,19 +57,19 @@
     }
 
     function withdraw() {
-      if (balance >= 100) {
-        Telegram.WebApp.openInvoice({
-          title: 'Bitcoin2zero Išmokėjimas',
-          description: 'Išgrynink savo Bitcoin į TON',
-          payload: 'withdraw_' + user.id + '_' + balance,
-          provider_token: '', // Įrašyk savo TON tokeną
-          currency: 'XTR',
-          prices: [{ label: 'Bitcoin', amount: Math.floor(balance * 100000000) }]
-        });
-      } else {
-        alert("Reikia bent 100 BTC išgryninimui!");
-      }
-    }
+  if (balance >= 0.000001) {
+    Telegram.WebApp.openInvoice({
+      title: 'Bitcoin2zero Išmokėjimas',
+      description: 'Išgrynink savo Bitcoin į TON',
+      payload: 'withdraw_' + user.id + '_' + balance,
+      provider_token: 'TON_TOKEN_abc123...',  // Įklijuok savo tokeną iš @wallet
+      currency: 'TON',  // TON valiuta
+      prices: [{ label: 'Bitcoin', amount: Math.floor(balance * 100000000) }]  // 1 satoshi = 1 TON centas
+    });
+  } else {
+    alert("Reikia bent 100 BTC išgryninimui!");
+  }
+}
 
     Telegram.WebApp.ready();
     updateBalance();
