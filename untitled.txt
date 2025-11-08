@@ -1,0 +1,16 @@
+<h1>Bitcoin2zero</h1>
+<p>Labas, <span id="user">...</span>!</p>
+<button onclick="sendData()">Siųsti duomenis botui</button>
+<button onclick="Telegram.WebApp.close()">Uždaryti</button>
+
+<script>
+  let user = Telegram.WebApp.initDataUnsafe.user;
+  document.getElementById("user").innerText = user.first_name;
+
+  function sendData() {
+    Telegram.WebApp.sendData("vartotojas_spaude_mygtuka");
+    alert("Duomenys išsiųsti!");
+  }
+
+  Telegram.WebApp.ready();
+</script>
